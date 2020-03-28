@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.2rem;
+  justify-content: center;
+  // margin: .5rem;
+  background-color: whitesmoke;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+.backSlash {
+  transform: scale(-0.5, 1);
+}
