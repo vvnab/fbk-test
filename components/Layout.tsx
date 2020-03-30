@@ -10,7 +10,7 @@ export default ({ children }) => {
       <section className={styles.main}>
         {children}
       </section>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }

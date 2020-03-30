@@ -1,5 +1,5 @@
 .container {
-  // height: 3.5rem;
+  height: auto;
 }
 
 .header {
@@ -10,8 +10,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  // position: fixed;
-  width: 100vw;
   .icon {
     font-size: 2.5rem;
     margin-right: 1rem;

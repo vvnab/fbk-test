@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.item {
+  background: #f9f9f9;
+  text-align: center;
+  margin: 0 0.1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 25%;
+  font-weight: 600;
+}
+
+.item.active {
+  background: #1d7471;
+  color: whitesmoke;
+  cursor: auto;
+}

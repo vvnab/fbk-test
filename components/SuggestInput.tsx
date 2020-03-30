@@ -1,9 +1,14 @@
 import styles from "./SuggestInput.module.scss"
 
-export default (props) => {
+export default ({ value, placeholder, onChange }) => {
   return (
     <div className={styles.container}>
-      <input type="text" className={styles.input} />
+      <input
+        type="text"
+        className={styles.input}
+        value={value}
+        placeholder={placeholder}
+        onChange={(e) => onChange(e.target.value)} />
     </div>
   )
 }
