@@ -6,8 +6,8 @@ import styles from "./Header.module.scss";
 export default (props) => {
   return <header className={styles.container}>
     <div className={styles.header}>
-      <FontAwesomeIcon className={styles.icon} icon={faGithub} />
-      <span>Hithub Issue Tracker</span>
+      {/* <FontAwesomeIcon className={styles.icon} icon={faGithub} /> */}
+      <span>GitHub Issue Tracker</span>
     </div>
   </header>
 }

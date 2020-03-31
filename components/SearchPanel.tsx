@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSlash, faSortAmountDown } from "@fortawesome/free-solid-svg-icons";
 import SuggestInput from "./SuggestInput";
 import SearchButton from "./SearchButton";
 import SelectPageSize from "./SelectPageSize";
@@ -15,14 +13,19 @@ export default ({ search }) => {
     <div className={styles.container}>
       <SuggestInput
         placeholder={"user"}
-        value={state.user}
-        onChange={(user: string) => dispatch({ user })} />
-      <FontAwesomeIcon className={styles.backSlash} icon={faSlash} />
+        value={state.userInput}
+        onChange={(user: string) => dispatch({ userInput: user })}
+      />
+      <div className={styles.backSlash}>/</div>
       <SuggestInput
         placeholder={"repository"}
-        value={state.repository}
-        onChange={(repository: string) => dispatch({ repository })} />
-      <SelectPageSize selected={state.pageSize} onSelect={(pageSize: number) => dispatch({ pageSize })} />
+        value={state.repositoryInput}
+        onChange={(repository: string) => dispatch({ repositoryInput: repository })}
+      />
+      <SelectPageSize
+        selected={state.pageSize}
+        onSelect={(pageSize: number) => dispatch({ pageSize })}
+      />
       <SearchButton onClick={search} />
     </div>
   )

@@ -3,9 +3,11 @@ import { createContext } from "react";
 export const ContextApp = createContext(null);
 
 export const initialState = {
-  user: "koajs",
+  userInput: "",
+  user: "",
   userSuggestions: [],
-  repository: "session",
+  repositoryInput: "",
+  repository: "",
   repositorySuggestions: [],
   pageSize: 10,
   currentPage: 1

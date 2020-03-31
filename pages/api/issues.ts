@@ -1,6 +1,6 @@
 import fetch from "../../utils/gitFetch";
 
-export default async function (req, res): Promise<string[]> {
+export default async function (req, res): Promise<any[]> {
   const { q, page = 1, per_page = 10 } = req.query;
   const result = await fetch({
     path: "search/issues",

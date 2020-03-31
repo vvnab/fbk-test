@@ -2,11 +2,17 @@ import IssueListItem from "./IssueListItem";
 
 import styles from "./IssueList.module.scss";
 
-export default ({ issues }) => {
+export default ({ issues, onClick }) => {
   return (
-    <table className={styles.container}>
-      {issues && issues.map((i, k) => <IssueListItem issue={i} key={k} />)}
-    </table>
+    <div className={styles.container}>
+      <table cellSpacing="0">
+        <tbody>
+          {
+            issues && issues.map((i: any, k: number) => <IssueListItem issue={i} key={k} onClick={onClick} />)
+          }
+        </tbody>
+      </table>
+    </div>
   )
 }
 
