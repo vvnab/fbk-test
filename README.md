@@ -1,5 +1,8 @@
 # Тестовое задание для ФБК
 
+## Demo
+    https://fbk-test.now.sh/
+
 ## Установка 
     yarn
 
@@ -9,3 +12,4 @@
 ## Запуск
     yarn start
     http://localhost:3000
+
