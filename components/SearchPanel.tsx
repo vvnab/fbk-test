@@ -15,12 +15,18 @@ export default ({ search }) => {
         placeholder={"user"}
         value={state.userInput}
         onChange={(user: string) => dispatch({ userInput: user })}
+        source="/api/users"
+        query={false}
+        disabled={false}
       />
       <div className={styles.backSlash}>/</div>
       <SuggestInput
         placeholder={"repository"}
         value={state.repositoryInput}
         onChange={(repository: string) => dispatch({ repositoryInput: repository })}
+        source="/api/repositories"
+        query={`user:${state.userInput}`}
+        disabled={!state.userInput}
       />
       <SelectPageSize
         selected={state.pageSize}

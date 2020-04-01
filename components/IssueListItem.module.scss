@@ -9,6 +9,8 @@
 }
 
 .avatar {
+  width: 2rem;
+  padding-right: 0.5rem;
   img {
     height: 2rem;
     width: auto;
@@ -19,4 +21,11 @@
   font-size: 80%;
   text-align: right;
   padding-right: 0.5rem;
+  font-weight: 500;;
+  &.open {
+    color: orange;
+  }
+  &.closed {
+    color: green;
+  }
 }

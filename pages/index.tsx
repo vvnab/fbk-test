@@ -1,4 +1,5 @@
-import { Fragment, useContext, useEffect } from "react";
+import { Fragment, useContext, useEffect, FC } from "react";
+import { GetServerSideProps } from "next";
 import { ceil } from "lodash";
 import { useRouter } from 'next/router';
 import Layout from "../components/Layout";
@@ -7,21 +8,25 @@ import IssueList from "../components/IssueList";
 import Paginator from "../components/Paginator";
 import Loading from "../components/Loading";
 import Message from "../components/Message";
+import {IList, IIssue} from "../models";
 
 import { ContextApp } from "../context/reducer";
 
 import fetcher from "../utils/fetcher";
 import useSWR from "swr";
 
+interface IIndex {
+  user: string
+  repository: string
+}
 
-
-export default (props) => {
+export default (props: IIndex) => {
   const router = useRouter();
   const { state, dispatch } = useContext(ContextApp);
   const { user, repository, userInput, repositoryInput, pageSize, currentPage } = state;
-  const { data, error } = useSWR(() => user && `/api/issues?q=repo:${user}/${repository}&page=${currentPage}&per_page=${pageSize}`, fetcher);
-  
-  useEffect(() => props && props.user && dispatch({ ...props, userInput: props.user, repositoryInput: props.repository }), []);
+  const { data, error } = useSWR<IList<IIssue>>(() => user && `/api/issues?q=repo:${user}/${repository}&page=${currentPage}&per_page=${pageSize}`, fetcher);
+
+  useEffect(() => props.user && dispatch({ ...props, userInput: props.user, repositoryInput: props.repository }), []);
   useEffect(() => {
     const url = {
       pathname: '/',
@@ -36,8 +41,8 @@ export default (props) => {
   return (
     <Layout>
       <SearchPanel search={search} />
-      {error && error.message !== "Forbidden" ? 
-      <Message error>{error.message}</Message> : data ?
+      {error && error.message !== "Forbidden" ?
+        <Message error>{error.message}</Message> : data ?
           <Fragment>
             <IssueList
               issues={data.items}
@@ -54,4 +59,4 @@ export default (props) => {
   )
 }
 
-export const getServerSideProps = async (context) => ({ props: context.query });
+export const getServerSideProps: GetServerSideProps = async (context) => ({ props: context.query });

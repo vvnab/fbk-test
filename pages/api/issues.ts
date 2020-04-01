@@ -1,4 +1,5 @@
 import fetch from "../../utils/gitFetch";
+import {IList, IIssue} from "../../models";
 
 export default async function (req, res): Promise<any[]> {
   const { q, page = 1, per_page = 10 } = req.query;
@@ -9,7 +10,7 @@ export default async function (req, res): Promise<any[]> {
   if (result.status !== 200) {
     return res.status(result.status).end(result.statusText);
   } else {
-    const issues = await result.json();
+    const issues: IList<IIssue> = await result.json();
     return res.json(issues);
   }
 }

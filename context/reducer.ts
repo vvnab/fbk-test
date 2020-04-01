@@ -14,6 +14,9 @@ export const initialState = {
 }
 
 export const reducer = (state: any, data: any) => {
+  if (data.userInput && !data.repositoryInput) {
+    data.repositoryInput = "";
+  }
   return {
     ...state,
     ...data

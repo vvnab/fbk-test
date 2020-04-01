@@ -1,6 +1,13 @@
 import styles from "./IssueListItem.module.scss";
 
-export default ({ issue, onClick }) => {
+import { IIssue } from "../models";
+
+interface IIssueListItem {
+  onClick: Function
+  issue: IIssue
+}
+
+export default ({ issue, onClick }: IIssueListItem) => {
   const { number, user, title, state } = issue;
   return (
     <tr className={styles.container} onClick={() => onClick(number)}>
@@ -8,7 +15,7 @@ export default ({ issue, onClick }) => {
         <img src={user.avatar_url} />
       </td>
       <td className={styles.title}>{title}</td>
-  <td className={styles.state}>{state}</td>
+      <td className={[styles.state, styles[state]].join(' ')}>{state}</td>
     </tr>
   )
 }

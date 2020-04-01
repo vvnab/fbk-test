@@ -18,7 +18,9 @@
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "swr": "^0.1.18"
+    "react-markdown": "^4.3.1",
+    "swr": "^0.1.18",
+    "use-debounce": "^3.4.0"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",

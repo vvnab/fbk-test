@@ -29,3 +29,34 @@
   border-radius: 10px;
   font-size: 80%;
 }
+
+.back {
+  float: right;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.commentContainer {
+  margin: 1rem 0;
+  .title {
+    background-color: lightgray;
+    padding: 0.25rem 0.5rem;
+    .user {
+      display: inline-block;
+      margin-right: 1rem;
+      font-weight: 600;
+    }
+    .dateTime {
+      display: inline-block;
+      font-size: 80%;
+    }
+  }
+  .body {
+    border: 1px solid lightgray;
+    padding: 1rem;
+    display: block;
+    // font-family: monospace;
+    // white-space: pre-wrap;
+    overflow: auto;
+  }
+}
