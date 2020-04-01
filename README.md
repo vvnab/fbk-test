@@ -1,7 +1,7 @@
 # Тестовое задание для ФБК
 
 ## Demo
-    https://fbk-test.now.sh/
+https://fbk-test.now.sh/
 
 ## Установка 
     yarn
