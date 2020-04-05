@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { faSleigh } from "@fortawesome/free-solid-svg-icons";
 
 export const ContextApp = createContext(null);
 
@@ -10,7 +11,9 @@ export const initialState = {
   repository: "",
   repositorySuggestions: [],
   pageSize: 10,
-  currentPage: 1
+  isLoading: false,
+  currentPage: 1,
+  totalCount: 0
 }
 
 export const reducer = (state: any, data: any) => {

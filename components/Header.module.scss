@@ -1,18 +1,36 @@
 .container {
-  height: auto;
-}
-
-.header {
   background-color: #1d7471;
   color: whitesmoke;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   padding: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.header {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .icon {
-  font-size: 2.5rem;
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+
+.back {
+  position: absolute;
+  right: 0;
+  top: 0.5rem;
+  cursor: pointer;
   margin-right: 1rem;
 }

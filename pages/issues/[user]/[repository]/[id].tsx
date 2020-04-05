@@ -1,27 +1,38 @@
-import { Fragment } from "react";
-import { useRouter } from "next/router";
-import {IIssue} from "../../../../models";
-
-import Layout from "../../../../components/Layout";
+import { useContext } from "react";
+import { GetServerSideProps } from 'next';
 import Issue from "../../../../components/Issue";
-import Loading from "../../../../components/Loading";
 import Message from "../../../../components/Message";
+import Loading from "../../../../components/Loading";
+import { ContextApp } from "../../../../context/reducer";
 
 
-import fetcher from "../../../../utils/fetcher";
-import useSWR from "swr";
+import fetchWhile from "../../../../utils/fetchWhile";
 
 export default props => {
-  const router = useRouter();
-  const { user, repository, id } = router.query;
-  const { data, error } = useSWR<IIssue>(() => user && `/api/issues/${user}/${repository}/${id}`, fetcher);
+  const { state } = useContext(ContextApp);
+  const { isLoading } = state;
   return (
-    <Layout>
-      {error && error.message !== "Forbidden" ?
-        <Message error>{error.message}</Message> : data ?
-          <Fragment>
-            <Issue issue={data} />
-          </Fragment> : <Loading />}
-    </Layout>
+    <>
+      {
+        isLoading
+          ? <Loading />
+          : props.error
+            ? <Message error>{props.message}</Message>
+            : <Issue issue={props} />
+      }
+    </>
   );
 };
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  const { user, repository, id } = context.query;
+  const protocol = (context.req.headers?.referer && context.req.headers.referer.split('://')[0]) || "http";
+  const host = context.req.headers.host;
+  try {
+    const props = await fetchWhile(`${protocol}://${host}/api/issues/${user}/${repository}/${id}`);
+    return { props };
+  } catch (ex) {
+    console.error(ex);
+    return { props: { error: true, message: ex.message } }
+  }
+}

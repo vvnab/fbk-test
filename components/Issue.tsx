@@ -1,8 +1,4 @@
-import { useRouter } from 'next/router';
-import { Fragment } from "react";
 import ReactMarkdown from "react-markdown";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReply } from "@fortawesome/free-solid-svg-icons";
 
 import { IIssue, IComment } from "../models";
 
@@ -16,12 +12,10 @@ interface IIssueInfoFC {
 }
 
 const IssueInfo = ({ repository, title, number, state }: IIssueInfoFC) => {
-  const router = useRouter();
   return (
-    <Fragment>
+    <>
       <div className={styles.repository}>
         {repository}
-        <FontAwesomeIcon className={styles.back} icon={faReply} onClick={router.back} />
       </div>
       <div className={styles.header}>
         <span className={styles.title}>{title}</span>
@@ -30,7 +24,7 @@ const IssueInfo = ({ repository, title, number, state }: IIssueInfoFC) => {
           <span className={styles.number}>#{number}</span>
         </span>
       </div>
-    </Fragment>
+    </>
   )
 }
 
@@ -55,7 +49,7 @@ export default ({ issue }: IIssueFC) => {
     <div className={styles.container}>
       <IssueInfo repository={repository} title={title} number={number} state={state} />
       <IssueComment user={user} created_at={created_at} body={body} />
-      {comments && comments.map((i: any, k: number) => <IssueComment
+      {comments && comments.length > 0 && comments.map((i: any, k: number) => <IssueComment
         key={k}
         user={i.user}
         created_at={i.created_at}
