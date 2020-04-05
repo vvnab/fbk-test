@@ -61,10 +61,12 @@ export default (props: IIndex) => {
           ? <Loading />
           : error
             ? <Message error>{message}</Message>
-            : <IssueList
-              issues={props.data.items}
-              onClick={goToIssue}
-            />
+            : props.data
+              ? <IssueList
+                issues={props.data.items}
+                onClick={goToIssue}
+              />
+              : <Message >Пусто</Message>
       }
       <Paginator
         quantity={ceil(totalCount / pageSize)}
