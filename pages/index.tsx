@@ -83,7 +83,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const protocol = (context.req.headers?.referer && context.req.headers.referer.split('://')[0]) || "http";
   const host = context.req.headers.host;
   try {
-    const data = user && repository && await fetchWhile(`${protocol}://${host}/api/issues?q=repo:${user}/${repository}&page=${currentPage}&per_page=${pageSize}`);
+    const data = (user && repository) ? await fetchWhile(`${protocol}://${host}/api/issues?q=repo:${user}/${repository}&page=${currentPage}&per_page=${pageSize}`) : null;
     return {
       props: {
         ...context.query,
