@@ -13,7 +13,7 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "dotenv": "^8.2.0",
     "lodash": "^4.17.15",
-    "next": "^9.3.2",
+    "next": "^11.1.0",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
